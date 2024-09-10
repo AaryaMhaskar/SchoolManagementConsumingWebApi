@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SchoolManagementConsumingWebApi.Models.Attendance>
+
+@{
+    ViewData["Title"] = "View Attendance";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (ViewData["Message"] != null)
+{
+    <div class="alert alert-info">
+        @ViewData["Message"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Attendance ID</th>
+            <th>Student ID</th>
+            <th>Date</th>
+            <th>Is Present</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var attendance in Model)
+        {
+            <tr>
+                <td>@attendance.attendanceId</td>
+                <td>@attendance.studentId</td>
+                <td>@attendance.date.ToShortDateString()</td>
+                <td>@(attendance.isPresent ? "Yes" : "No")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@* <!-- Form to add attendance -->
+<h3>Add Attendance</h3>
+<form asp-action="AddAttendance" method="post">
+    <div class="form-group">
+        <label asp-for="AttendanceId" class="control-label"></label>
+        <input asp-for="AttendanceId" class="form-control" />
+        <span asp-validation-for="AttendanceId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="StudentId" class="control-label"></label>
+        <input asp-for="StudentId" class="form-control" />
+        <span asp-validation-for="StudentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Date" class="control-label"></label>
+        <input asp-for="Date" class="form-control" type="date" />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IsPresent" class="control-label"></label>
+        <input asp-for="IsPresent" type="checkbox" />
+        <span asp-validation-for="IsPresent" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+ *@

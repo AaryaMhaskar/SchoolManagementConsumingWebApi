@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SchoolManagementConsumingWebApi.Models.Assignment>
+
+@{
+    ViewData["Title"] = "View Assignments";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (ViewData["Message"] != null)
+{
+    <div class="alert alert-info">
+        @ViewData["Message"]
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Assignment ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Assign Date</th>
+            <th>Submission Date</th>
+            <th>File Path</th>
+            <th>Class ID</th>
+            <th>Subject ID</th>
+            <th>Teacher ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var assignment in Model)
+        {
+            <tr>
+                <td>@assignment.AssignmentId</td>
+                <td>@assignment.Title</td>
+                <td>@assignment.Description</td>
+                <td>@assignment.AssignDate.ToShortDateString()</td>
+                <td>@assignment.SubmissionDate.ToShortDateString()</td>
+                <td>@assignment.FilePath</td>
+                <td>@assignment.ClassId</td>
+                <td>@assignment.SubjectId</td>
+                <td>@assignment.TeacherId</td>
+            </tr>
+        }
+    </tbody>
+</table>
