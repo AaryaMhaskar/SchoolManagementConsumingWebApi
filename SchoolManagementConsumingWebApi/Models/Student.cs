@@ -5,17 +5,32 @@ namespace SchoolManagementConsumingWebApi.Models
 {
     public class Student
     {
+       
+    public int StudentId { get; set; }
+
+        public string FirstName { get; set; } = null!;
+
+        public string LastName { get; set; } = null!;
+
         public int ClassId { get; set; }
 
-        public string ClassName { get; set; } = null!;
+        public string? Std { get; set; }
 
-        public decimal AnnualFees { get; set; }
+        public string? Password { get; set; }
 
-        public virtual ICollection<Assignment> Assignments { get; } = new List<Assignment>();
+        public string? ParentEmail { get; set; }
 
-        public virtual ICollection<Student> Students { get; } = new List<Student>();
-        //public virtual ICollection<Teacher> Teachers { get; } = new List<Teacher>();
+        public string? PhoneNumber { get; set; }
 
-        //public virtual ICollection<Timetable> Timetables { get; } = new List<Timetable>();
+        public string? FeesStatus { get; set; }
+
+        public int? UsersId { get; set; }
+
+        //public virtual ICollection<AssignmentResponse> AssignmentResponses { get; } = new List<AssignmentResponse>();
+
+        //public virtual ICollection<Attendance> Attendances { get; } = new List<Attendance>();
+
+        //public virtual Class Class { get; set; } = null!;
     }
+
 }
