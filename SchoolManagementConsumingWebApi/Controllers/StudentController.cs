@@ -31,7 +31,7 @@ namespace SchoolManagementConsumingWebApi.Controllers
                 return View(attendances);
             }
 
-            return View(new List<Attendance>()); // Return an empty list if the request fails
+            return View(new List<Attendance>());
         }
 
         [HttpPost]
@@ -51,7 +51,7 @@ namespace SchoolManagementConsumingWebApi.Controllers
                 ViewData["Message"] = "An error occurred while submitting attendance.";
             }
 
-            // Redirect to the same action to display the updated list
+           
             return RedirectToAction("ViewAttendance");
         }
 
@@ -68,7 +68,7 @@ namespace SchoolManagementConsumingWebApi.Controllers
                 return View(assignments);
             }
 
-            return View(new List<Assignment>()); // Return an empty list if the request fails
+            return View(new List<Assignment>()); 
         }
 
         public async Task<IActionResult> ViewTimeTable()
@@ -83,7 +83,7 @@ namespace SchoolManagementConsumingWebApi.Controllers
                 return View(assignments);
             }
 
-            return View(new List<TimeTable>()); // Return an empty list if the request fails
+            return View(new List<TimeTable>());
         }
 
         public async Task<IActionResult> ViewFeeStatus()
@@ -98,7 +98,7 @@ namespace SchoolManagementConsumingWebApi.Controllers
                 return View(assignments);
             }
 
-            return View(new List<Student>()); // Return an empty list if the request fails
+            return View(new List<Student>()); 
         }
 
 
@@ -114,7 +114,7 @@ namespace SchoolManagementConsumingWebApi.Controllers
                 return View(assignments);
             }
 
-            return View(new List<Student>()); // Return an empty list if the request fails
+            return View(new List<Student>()); 
         }
 
         public IActionResult displayStudentData(int id)
@@ -138,23 +138,23 @@ namespace SchoolManagementConsumingWebApi.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateStudentData(Student s)
         {
-            // Construct the URL for updating the student
+            
             string url = $"https://localhost:44375/api/Student/UpdateStudent";
 
-            // Serialize the student object to JSON
+           
             var jsondata = JsonConvert.SerializeObject(s);
             StringContent stringContent = new StringContent(jsondata, Encoding.UTF8, "application/json");
 
             try
             {
-                // Send the PUT request asynchronously
+               
                 HttpResponseMessage msg = await _client.PutAsync(url, stringContent);
 
-                // Log the response status code and content for debugging
+               
                 var statusCode = msg.StatusCode;
                 var responseContent = await msg.Content.ReadAsStringAsync();
 
-                // Debug logs
+               
                 Console.WriteLine($"Status Code: {statusCode}");
                 Console.WriteLine($"Response Content: {responseContent}");
 
@@ -164,14 +164,14 @@ namespace SchoolManagementConsumingWebApi.Controllers
                 }
                 else
                 {
-                    // Display or log detailed error message
+                   
                     TempData["Message"] = $"Failed to update student data. Status Code: {statusCode}. Response: {responseContent}";
                     return View(s);
                 }
             }
             catch (Exception ex)
             {
-                // Handle and log any exceptions
+               
                 TempData["Message"] = $"An error occurred: {ex.Message}";
                 return View(s);
             }

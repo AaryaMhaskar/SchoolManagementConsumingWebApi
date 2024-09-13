@@ -1,0 +1,28 @@
+﻿@model OrderEntity;
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateOrder">
+            <div class="form-group">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Mobile" class="form-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Amount" class="form-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-success" value="Click To Pay" />
+            </div>
+        </form>
+    </div>
+</div>
